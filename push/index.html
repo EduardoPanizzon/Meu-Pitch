@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+
+<head>
+    <title>Testa PUSH notifications </title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Betamenu Food - find the absolute best dish in Cameroon.">
+    <meta name="format-detection" content="telephone=yes">
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
+
+    <script src="./src/push.js"></script>
+
+    <script  src="./src/app.js"></script>
+
+    <style>
+        body {
+            margin: 0 0 0 0;
+
+        }
+        #instalacao{
+            display: none;
+            width:100%;
+        }
+        .button {
+
+          background-color: #6a97d7; /* Green */
+          border: none;
+          color: white;
+          padding: 0 0 0 0 ;
+          padding-top:10px;
+          padding-bottom:10px;
+
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 0 0 0 0;
+          margin-top: 0px;
+          margin-bottom: 20px;
+          cursor: pointer;
+          border-radius: 8px;
+          font-weight: bold;
+        }
+        
+
+        .button3 {width: 49%;}
+        </style>
+</head>
+
+<body>
+    <div id="app">
+    <div id="instalacao">
+        <button class="button button3" id="install" >Instala</button>
+        <button class="button button3" id="omite" >Agora não</button>
+    </div>
+
+    App
+
+    <label>Nome:<input type="text" id="nome"></label>
+
+    <button onclick="fazEnvio()"> Entra </button>
+    <button id="btn"> configura</button>
+
+    </div>
+</body>
+
+
+</html>
