@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Pitch</title>
+    <title>Página de Cadastro</title>
     <style>
         body {
             display: flex;
@@ -21,11 +21,28 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 300px;
         }
         h1 {
             margin-bottom: 20px;
             font-size: 2em;
             letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
         }
         .button {
             display: inline-block;
@@ -40,6 +57,8 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
             text-decoration: none;
+            width: 100%;
+            margin-top: 20px;
         }
         .button:hover {
             background-color: #0056b3;
@@ -49,9 +68,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Escolha uma Opção</h1>
-        <button class="button" onclick="alert('Botão 1 clicado')">Empreendendor</button>
-        <button class="button" onclick="alert('Botão 2 clicado')">Entusiasta</button>
+        <h1>Cadastro</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="button">Cadastrar</button>
+        </form>
     </div>
 </body>
 </html>
