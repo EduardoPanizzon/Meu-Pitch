@@ -1,0 +1,72 @@
+{
+    "name": "Meu app",
+    "short_name": "APP",
+    "description": "abc",
+    "lang": "pt",
+    "scope":"/push/",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0044a5",
+    "theme_color": "#0044a5",
+    "orientation": "portrait",
+    "id":"/push/",
+    "launch_handler": {
+      "client_mode": ["navigate-existing", "auto"]
+  },
+  "dir": "ltr",
+    "categories": [
+      "books",
+      "games"
+    ],
+  "screenshots": [
+      {
+        "src": "screenshots/screen1.png",
+        "sizes": "1366x768",
+        "type": "image/webp",
+        "platform": "wide",
+        "label": "Homescreen of Awesome App"
+      },
+      {
+        "src": "screenshots/screen1.png",
+        "sizes": "1366x768",
+        "type": "image/webp",
+        "platform": "wide",
+        "label": "List of Awesome Resources available in Awesome App"
+      }
+    ],
+  "permissions": [
+      "notifications"
+    ],
+    "icons": [
+      {
+        "src": "icons/pequeno.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+       {
+        "src": "icons/icone.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "icons/icone.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "icons/badge.png",
+        "sizes": "128x128",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "icons/grande.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "protocol_handlers":[{"protocol":"web+pwa","url":"https://apps.solutions4fun.com.br/push?launchedfrom=homescreen&pwaprotocolredirect=%s"},{"protocol":"web+teste","url":"https://apps.solutions4fun.com.br/push?launchedfrom=homescreen&pwaprotocolredirect=%s"}]
+  }
+  
