@@ -39,6 +39,7 @@ app.get('/REST/push',async function(req,resp) {
 
 app.post('/REST/registraEntusiasta', function(req,resp) {
   console.log('registraUsuario');
+  
 
   
   let key  = JSON.parse(req.body.key);
@@ -54,6 +55,25 @@ app.post('/REST/registraEntusiasta', function(req,resp) {
 
 
   mongo.inserirEntusiasta(req.body);
+  resp.send({valor:'rodando'});
+});
+
+app.post('/REST/registraEmpreendedor', function(req,resp) {
+  console.log('registraEmpreendedor');
+
+  console.log(req.body);
+  let key  = JSON.parse(req.body.key);
+  
+  vetor.push ({nome:req.body.nome, key:key,
+    it: req.body.it,
+    saude: req.body.saude,
+    fintech: req.body.fintech,
+    mobilidade: req.body.mobilidade,
+    agricultura: req.body.agricultura,
+    educacao: req.body.educacao,
+    alimentacao: req.body.alimentacao});
+
+  mongo.inserirEmpreendedor(req.body);
   resp.send({valor:'rodando'});
 });
 

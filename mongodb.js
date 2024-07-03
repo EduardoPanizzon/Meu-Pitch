@@ -16,15 +16,27 @@ async function inserirEntusiasta(dados)
 {
     await conecta();
     try {
+        let a = await Entusiasta.insertOne(dados);
+        } catch (e) {
+        console.log (e);
+    }
+}
+
+async function inserirEmpreendedor(dados)
+{
+    await conecta();
+    try {
         let a = await Empreendedor.insertOne(dados);
         } catch (e) {
         console.log (e);
     }
 }
+
 async function remove()
 {
+   await conecta();
     try {
-        let a = await locais.deleteOne({_id:'ANA'});
+        let a = await Entusiasta.deleteMany({fintech: "asdsad"});
         console.log(a);
     } catch (e) {
         console.log (e);
@@ -62,4 +74,4 @@ async function detalhes(categoria, item){
 
 }
 
-module.exports = {inserirEntusiasta};   
+module.exports = {inserirEntusiasta, inserirEmpreendedor};   

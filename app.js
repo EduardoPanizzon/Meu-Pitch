@@ -19,7 +19,25 @@ function fazEnvio() {
     var educacao = document.getElementById('educacao').checked;
     var alimentacao = document.getElementById('alimentacao').checked;
     var dados = [nome, it, saude, fintech, mobilidade, agricultura, educacao, alimentacao, dados]
+    console.log("ERRADO");
     envia(dados, settings.pushSubscription);
+}
+
+function fazEnvioEmpreendedor() {
+    var nome = document.getElementById('nome').value;
+    var email = document.getElementById('email').value;
+    var senha = document.getElementById('senha').value;
+    var startupNome = document.getElementById('startupNome').value;
+    var startupDesc = document.getElementById('startupDesc').value;
+    var it = document.getElementById('it').checked;
+    var saude = document.getElementById('saude').checked;
+    var fintech = document.getElementById('fintech').checked;
+    var mobilidade = document.getElementById('mobilidade').checked;
+    var agricultura = document.getElementById('agricultura').checked;
+    var educacao = document.getElementById('educacao').checked;
+    var alimentacao = document.getElementById('alimentacao').checked;
+    var dados = [nome, email, senha, startupNome, startupDesc, it, saude, fintech, mobilidade, agricultura, educacao, alimentacao, dados]
+    enviaEmpreendedor(dados, settings.pushSubscription);
 }
 
 async function envia(dados, key) {
@@ -41,6 +59,36 @@ async function envia(dados, key) {
                 agricultura: dados[5],
                 educacao: dados[6],
                 alimentacao: dados[7],
+            })
+        })
+        .then(response => response.json())
+        .then(json => console.log(json));
+
+}
+
+async function enviaEmpreendedor(dados, key) {
+
+    console.log('pushSubscrition:', key);
+
+    fetch("http://localhost:4500/REST/registraEmpreendedor", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome: dados[0],
+                key: JSON.stringify(key),
+                email: dados[1],
+                senha: dados[2],
+                startupNome: dados[3],
+                startupDesc: dados[4],
+                it: dados[5],
+                saude: dados[6],
+                fintech: dados[7],
+                mobilidade: dados[8],
+                agricultura: dados[9],
+                educacao: dados[10],
+                alimentacao: dados[11],
             })
         })
         .then(response => response.json())
