@@ -12,10 +12,11 @@ async function conecta()
     EntusiastaCriterio = await db.collection("EntusiastaCriterio");
     EmpreendendorCriterio = await db.collection("EmpreendedorCriterio");
 }
-async function inserte()
+async function inserirEntusiasta(dados)
 {
+    await conecta();
     try {
-        let a = await Empreendedor.insertOne({teste:"comida"});
+        let a = await Empreendedor.insertOne(dados);
         } catch (e) {
         console.log (e);
     }
@@ -61,4 +62,4 @@ async function detalhes(categoria, item){
 
 }
 
-init();
+module.exports = {inserirEntusiasta};   

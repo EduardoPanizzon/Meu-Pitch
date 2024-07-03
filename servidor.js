@@ -1,6 +1,7 @@
 var express     = require('express');
 var cors        = require('cors');
 var app         = express();
+var mongo       = require('./mongodb');
 
 const Redis = require('ioredis');
 
@@ -39,7 +40,7 @@ app.get('/REST/push',async function(req,resp) {
 app.post('/REST/registraEntusiasta', function(req,resp) {
   console.log('registraUsuario');
 
-  console.log(req.body)
+  
   let key  = JSON.parse(req.body.key);
   
   vetor.push ({nome:req.body.nome, key:key,
@@ -52,13 +53,9 @@ app.post('/REST/registraEntusiasta', function(req,resp) {
     alimentacao: req.body.alimentacao});
 
 
+  mongo.inserirEntusiasta(req.body);
   resp.send({valor:'rodando'});
 });
-
-
-
-
-
 
 
 
