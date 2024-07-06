@@ -9,6 +9,8 @@ const redis = new Redis();
 
 var vetor=[];
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(express.json());
 
 app.use(cors());
