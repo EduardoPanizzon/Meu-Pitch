@@ -9,6 +9,8 @@ const options = {
 
 };
 
+let id = null;
+
 function fazEnvio() {
     var nome = document.getElementById('nome').value;
     var it = document.getElementById('it').checked;
@@ -19,7 +21,7 @@ function fazEnvio() {
     var educacao = document.getElementById('educacao').checked;
     var alimentacao = document.getElementById('alimentacao').checked;
     var dados = [nome, it, saude, fintech, mobilidade, agricultura, educacao, alimentacao, dados]
-    console.log("ERRADO");
+    //console.log("ERRADO");
     envia(dados, settings.pushSubscription);
 }
 
@@ -62,8 +64,8 @@ async function envia(dados, key) {
             })
         })
         .then(response => response.json())
-        .then(json => console.log(json));
-
+        .then(json => console.log(json.id));
+    
 }
 
 async function enviaEmpreendedor(dados, key) {
@@ -92,7 +94,7 @@ async function enviaEmpreendedor(dados, key) {
             })
         })
         .then(response => response.json())
-        .then(json => console.log(json));
+        .then(json => console.log(json.id));
 
 }
 
@@ -113,12 +115,6 @@ async function enviaEmpreendedor(dados, key) {
         }
 
     }
-
-    window.addEventListener("beforeinstallprompt", (event) => {
-        event.preventDefault();
-        installPrompt = event;
-        document.getElementById('instalacao').style.display='block';
-      });
 
     document.addEventListener("DOMContentLoaded", function() {
         console.log('rodando');
@@ -147,3 +143,23 @@ async function enviaEmpreendedor(dados, key) {
 
 
     });
+
+    function urlBase64ToUint8Array(base64String) {
+        const padding = '='.repeat((4 - base64String.length % 4) % 4);
+        const base64 = (base64String + padding)
+            .replace(/\-/g, '+')
+            .replace(/_/g, '/');
+
+        const rawData = window.atob(base64);
+        const outputArray = new Uint8Array(rawData.length);
+
+        for (let i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+    }
+
+    function determineAppServerKey() {
+        var vapidPublicKey = settings.public;
+        return urlBase64ToUint8Array(vapidPublicKey);
+    }

@@ -37,7 +37,7 @@ app.get('/REST/push',async function(req,resp) {
 
 });
 
-app.post('/REST/registraEntusiasta', function(req,resp) {
+app.post('/REST/registraEntusiasta', async function(req,resp) {
   console.log('registraUsuario');
   
 
@@ -54,11 +54,12 @@ app.post('/REST/registraEntusiasta', function(req,resp) {
     alimentacao: req.body.alimentacao});
 
 
-  mongo.inserirEntusiasta(req.body);
-  resp.send({valor:'rodando'});
+  var id = await mongo.inserirEntusiasta(req.body);
+  console.log(id);
+  resp.send({id:id});
 });
 
-app.post('/REST/registraEmpreendedor', function(req,resp) {
+app.post('/REST/registraEmpreendedor', async function(req,resp) {
   console.log('registraEmpreendedor');
 
   console.log(req.body);
@@ -73,8 +74,9 @@ app.post('/REST/registraEmpreendedor', function(req,resp) {
     educacao: req.body.educacao,
     alimentacao: req.body.alimentacao});
 
-  mongo.inserirEmpreendedor(req.body);
-  resp.send({valor:'rodando'});
+  var id = await mongo.inserirEmpreendedor(req.body);
+  console.log(id);
+  resp.send({id:id});
 });
 
 

@@ -17,6 +17,7 @@ async function inserirEntusiasta(dados)
     await conecta();
     try {
         let a = await Entusiasta.insertOne(dados);
+        return a.insertedId.toString();
         } catch (e) {
         console.log (e);
     }
@@ -27,6 +28,7 @@ async function inserirEmpreendedor(dados)
     await conecta();
     try {
         let a = await Empreendedor.insertOne(dados);
+        return a.insertedId.toString();
         } catch (e) {
         console.log (e);
     }
@@ -46,8 +48,8 @@ async function consulta (categoria)
 {
     var client = new MongoClient('mongodb://127.0.0.1:27017');
     await client.connect();
-    db = await client.db("RESTAURANTE");
-    a = await db.collection(categoria);
+    db = await client.db("MeuPitch");
+    a = await db.collection("Empreendedor");
     let b = await a.find( {} ).toArray();
     console.log(b);
     b = b.map(c => c._id)
