@@ -10,6 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -17,47 +18,61 @@
             color: #fff;
         }
         .container {
-            text-align: center;
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
         }
         h1 {
-            margin-bottom: 20px;
             font-size: 2em;
             letter-spacing: 1px;
         }
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            text-decoration: none;
+        .startup {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
         }
-        .button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
+        .startup h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #ffcc00;
+        }
+        .startup p {
+            margin: 5px 0;
+        }
+        .startup a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .startup a:hover {
+            color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Escolha uma Opção</h1>
-        <button class="button" onclick="window.location.href='CadastroEmpreendedor.html'">Empreendendor</button>
-        <button class="button" onclick="window.location.href='CadastroEntusiasta.html'">Entusiasta</button>
+    <div id="app">
+    <h1>Lista de Startups</h1>
+    <div class="container" v-for="st in startups" >
+        <div class="startup">
+            <h2>{{st.startupNome}}</h2>
+            <p><strong>Email:</strong> {{st.email}}</p>
+            <p><strong>Descrição:</strong> {{st.startupDesc}}            </p>
+            <p><strong>Video:</strong> <a href="https://www.example.com/video1" target="_blank">Assistir Video</a></p>
+        </div>
+    </div>
     </div>
     <script>
         new Vue({
             el: '#app',
-            data: {startups: []},
+            data: {startups: [],
+                restaurantName: 'Nome do Restaurante'
+            },
             async created(){
 
                 const searchParams = new URLSearchParams(window.location.search);
