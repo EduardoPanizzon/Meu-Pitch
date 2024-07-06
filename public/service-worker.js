@@ -30,9 +30,9 @@ self.addEventListener('notificationclick', function (event) {
     event.waitUntil(
       
      
-      // with the same tag of another one will replace it).
-      self.registration.showNotification('ServiceWorker Cookbook', {
-        body: 'DEF ' + num,
+      //with the same tag of another one will replace it).
+      self.registration.showNotification('Nova Start-Up', {
+        body: 'Há um novo cadastro de Start-Up que pode ser do seu interesse',
         tag: 'swc'
             })
     );

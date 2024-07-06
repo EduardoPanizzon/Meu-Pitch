@@ -55,8 +55,11 @@ app.post('/REST/registraEntusiasta', async function(req,resp) {
     educacao: req.body.educacao,
     alimentacao: req.body.alimentacao});
 
-
   var id = await mongo.inserirEntusiasta(req.body);
+  interesses = mongo.criaJson(req.body.it,req.body.saude,req.body.fintech, req.body.mobilidade,req.body.agricultura,req.body.educacao, req.body.alimentacao)
+  result = await mongo.getListaPush(interesses);
+  result = await result.toArray();
+  console.log(result);
   console.log(id);
   resp.send({id:id});
 });
@@ -77,10 +80,41 @@ app.post('/REST/registraEmpreendedor', async function(req,resp) {
     alimentacao: req.body.alimentacao});
 
   var id = await mongo.inserirEmpreendedor(req.body);
+  interesses = mongo.criaJson(req.body.it, req.body.saude, req.body.fintech, req.body.mobilidade, req.body.agricultura, req.body.educacao, req.body.alimentacao)
+  await faz_push(interesses);
   console.log(id);
   resp.send({id:id});
 });
 
+async function faz_push(interesses) {
+  
+  result = await mongo.getListaPush(interesses);
+  result = await result.toArray();
+  console.log(result);
+
+  for(i = 0; i < result.length; i++){
+    let conteudo = 'SEM conteudo';
+    let pushSubscription = JSON.parse(result[i].key);;
+
+    await redis.rpush("push", JSON.stringify({pushSubscription:pushSubscription,conteudo:conteudo}));
+  }
+};
+
+app.get('/listaStartUps/:id', async function (req,res){
+
+  var id = req.params.id;
+
+  listaStartUps = await mongo.listaStartUps(id);
+  listaStartUps = await listaStartUps.toArray();
+
+  console.log(listaStartUps)
+
+  res.send(listaStartUps)
+  res.end()
+
+  // interesses = criaJson(req.body.it, req.body.saude, req.body.fintech, req.body.mobilidade, req.body.agricultura, req.body.educacao, req.body.alimentacao)
+  // await faz_push(interesses);
+})
 
 
 app.get(/^(.+)$/, function (req, res) {

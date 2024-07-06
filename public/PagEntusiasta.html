@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <title>Entusiasta</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #003366;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            letter-spacing: 1px;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha uma Opção</h1>
+        <button class="button" onclick="window.location.href='CadastroEmpreendedor.html'">Empreendendor</button>
+        <button class="button" onclick="window.location.href='CadastroEntusiasta.html'">Entusiasta</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {startups: []},
+            async created(){
+
+                const searchParams = new URLSearchParams(window.location.search);
+                let lista = await fetch('http://localhost:4500/listaStartUps/' + searchParams.get("id"));
+                this.startups = await lista.json();
+                console.log(this.startups);
+            }
+        })
+    </script>
+</body>
+</html>

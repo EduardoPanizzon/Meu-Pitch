@@ -21,7 +21,6 @@ function fazEnvio() {
     var educacao = document.getElementById('educacao').checked;
     var alimentacao = document.getElementById('alimentacao').checked;
     var dados = [nome, it, saude, fintech, mobilidade, agricultura, educacao, alimentacao, dados]
-    //console.log("ERRADO");
     envia(dados, settings.pushSubscription);
 }
 
@@ -64,8 +63,7 @@ async function envia(dados, key) {
             })
         })
         .then(response => response.json())
-        .then(json => console.log(json.id));
-    
+        .then(json => window.location = "PagEntusiasta.html?id=" + json.id);
 }
 
 async function enviaEmpreendedor(dados, key) {
