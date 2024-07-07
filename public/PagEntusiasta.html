@@ -63,7 +63,7 @@
             <h2>{{st.startupNome}}</h2>
             <p><strong>Email:</strong> {{st.email}}</p>
             <p><strong>Descrição:</strong> {{st.startupDesc}}            </p>
-            <p><strong>Video:</strong> <a href="https://www.example.com/video1" target="_blank">Assistir Video</a></p>
+            <p><strong>Video:</strong> <a v-bind:href="st.video" target="_blank">Assistir Video</a></p>
         </div>
     </div>
     </div>

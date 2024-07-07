@@ -81,7 +81,7 @@ async function listaStartUps(id) {
     listaInteresses = await listaInteresses.toArray()
     interesses = criaJson(listaInteresses[0].it, listaInteresses[0].saude, listaInteresses[0].fintech, listaInteresses[0].mobilidade, listaInteresses[0].agricultura, listaInteresses[0].educacao, listaInteresses[0].alimentacao);
     
-    listaPush = await Empreendedor.find({ $or: interesses } , {projection: {_id: 0, startupNome:1, startupDesc:1, email:1}});    
+    listaPush = await Empreendedor.find({ $or: interesses } , {projection: {_id: 0, startupNome:1, startupDesc:1, email:1, video:1}});    
     return listaPush
 }
 

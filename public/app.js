@@ -30,6 +30,7 @@ function fazEnvioEmpreendedor() {
     var senha = document.getElementById('senha').value;
     var startupNome = document.getElementById('startupNome').value;
     var startupDesc = document.getElementById('startupDesc').value;
+    var video = document.getElementById('video').value;
     var it = document.getElementById('it').checked;
     var saude = document.getElementById('saude').checked;
     var fintech = document.getElementById('fintech').checked;
@@ -37,7 +38,7 @@ function fazEnvioEmpreendedor() {
     var agricultura = document.getElementById('agricultura').checked;
     var educacao = document.getElementById('educacao').checked;
     var alimentacao = document.getElementById('alimentacao').checked;
-    var dados = [nome, email, senha, startupNome, startupDesc, it, saude, fintech, mobilidade, agricultura, educacao, alimentacao, dados]
+    var dados = [nome, email, senha, startupNome, startupDesc, video, it, saude, fintech, mobilidade, agricultura, educacao, alimentacao, dados]
     enviaEmpreendedor(dados, settings.pushSubscription);
 }
 
@@ -82,13 +83,14 @@ async function enviaEmpreendedor(dados, key) {
                 senha: dados[2],
                 startupNome: dados[3],
                 startupDesc: dados[4],
-                it: dados[5],
-                saude: dados[6],
-                fintech: dados[7],
-                mobilidade: dados[8],
-                agricultura: dados[9],
-                educacao: dados[10],
-                alimentacao: dados[11],
+                video: dados[5],
+                it: dados[6],
+                saude: dados[7],
+                fintech: dados[8],
+                mobilidade: dados[9],
+                agricultura: dados[10],
+                educacao: dados[11],
+                alimentacao: dados[12],
             })
         })
         .then(response => response.json())
